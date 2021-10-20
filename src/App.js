@@ -1,23 +1,77 @@
-import logo from './logo.svg';
+import React, { useEffect, useState } from 'react';
 import './App.css';
+import { Checkbox } from './components/Checkbox/Checkbox';
+import { Number } from './components/Number/Number';
+import { Radio } from './components/Radio/Radio';
+import { String } from './components/String/String';
+import form from './JSON/form.json'
+import inputs from './JSON/inputs.json';
+
+const typeInputs = {
+  RADIO: Radio,
+  CHECKBOX: Checkbox,
+  STRING: String,
+  NUMBER: Number,
+}
 
 function App() {
+
+  const [step, setStep] = useState(0) /**текущий шаг */
+  const [numInputs, setNumInputs] = useState([]) /**массив в котором лежат все типы и имена инпутов  */
+  const [Input, setInput] = useState([]) /**собираем необходимые компоненты */
+
+  const formStep = form.filter((stepForm, index) => index ===  step) /**фильтруем текущий шаг */
+  const inputsForStep = inputs.filter(input => input.step === formStep[0].groupName)/**фильтруем текущий инпут */
+  const currentStepForm = [...formStep,...inputsForStep] /** объединяем в 1 массив */
+  const arrayNewComponents = []
+  
+  useEffect(() => {
+    setNumInputs(currentStepForm[0].items) /**при первом рендере записываем текущее значение и типы инпутов */
+  },[])
+
+  useEffect(() => {
+    numInputs.map(type => { /**бегу по массиву с типами инпутов */
+      currentStepForm.map(option => { /**бегу по общему массиву */
+        if (Array.isArray(option.options)) { /**ищу в нем опшены */
+          option.options.map(opt => { /**бегу по массиву опшинов */
+            let objectTest = {}
+            const newComponent = typeInputs[type.type] /**создаю компоненты */
+            objectTest.label = opt.label
+            objectTest.value = opt.value
+            objectTest.name = type.name
+            objectTest.inputComponent = newComponent
+            arrayNewComponents.push(objectTest) /**добавляю в массив */
+          })
+        }
+      })
+      setInput(arrayNewComponents)
+    })
+  },[numInputs])
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      {
+        currentStepForm.map(item => ( /**мапим текущую форму */
+          <div className="form">
+            <h1 className="formName">{item.groupName}</h1>
+          </div>
+        ))
+      }
+      {
+        <div>
+        {
+          Input.map(Inp => ( /**мапим массив с компонентами */
+            <div>
+              <Inp.inputComponent
+                value={Inp.value}
+                label={Inp.label}
+                name={Inp.name}
+              />
+            </div>
+          ))
+        }
+      </div>
+      }
     </div>
   );
 }

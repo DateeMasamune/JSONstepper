@@ -1,0 +1,80 @@
+[
+  {
+    "step": "monthly_income",
+    "label": "Ingresos netos mensuales",
+    "options": [
+      {
+        "label": "Trabajador cuenta ajena",
+        "value": 1
+      },
+      {
+        "label": "Trabajador autónomo",
+        "value": 2
+      },
+      {
+        "label": "Funcionario",
+        "value": 3
+      },
+      {
+        "label": "Desempleado sin ingresos",
+        "value": 4
+      }
+    ]
+  },
+  {
+    "step": "contract_type",
+    "label": "Tipo de contrato",
+    "options": [
+      {
+        "label": "Contrato indefinido",
+        "value": 1
+      },
+      {
+        "label": "Contrato temporal",
+        "value": 2
+      },
+      {
+        "label": "Contrato de práctica",
+        "value": 3
+      },
+      {
+        "label": "Contrato de aprendizaje",
+        "value": 4
+      }
+    ]
+  },
+  {
+    "step": "defaulter_list",
+    "label": "¿Estás en listados de ASNEF/RAI?",
+    "options": [
+      {
+        "label": "No",
+        "value": 0
+      },
+      {
+        "label": "Sí",
+        "value": 1
+      }
+    ]
+  },
+  {
+    "step": "firstname1",
+    "label": "Nombre"
+  },
+  {
+    "step": "lastname1",
+    "label": "Apellidos"
+  },
+  {
+    "step": "email",
+    "label": "Email"
+  },
+  {
+    "step": "accept",
+    "label": "Acepto las {use} de uso y {policy} de privacidad"
+  },
+  {
+    "step": "phone",
+    "label": "Teléfono móvil"
+  }
+]

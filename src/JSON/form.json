@@ -1,0 +1,109 @@
+[
+  {
+    "groupName": "monthly_income",
+    "items": [
+      {
+        "name": "monthly_income",
+        "type": "RADIO"
+      }
+    ]
+  },
+  {
+    "groupName": "employments_status",
+    "items": [
+      {
+        "name": "employments_status",
+        "type": "RADIO"
+      }
+    ]
+  },
+  {
+    "groupName": "work_since",
+    "items": [
+      {
+        "name": "work_since",
+        "type": "RADIO",
+        "conditions": [
+          {
+            "item": "employments_status",
+            "condition": "IN",
+            "condition_value": [1, 2, 3]
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "groupName": "contract_type",
+    "items": [
+      {
+        "name": "contract_type",
+        "type": "RADIO",
+        "conditions": [
+          {
+            "item": "employments_status",
+            "condition": "<=",
+            "condition_value": 3
+          },
+          {
+            "item": "employments_status",
+            "condition": ">",
+            "condition_value": 0
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "groupName": "defaulter_list",
+    "items": [
+      {
+        "name": "defaulter_list",
+        "type": "RADIO"
+      }
+    ]
+  },
+  {
+    "groupName": "firstname_lastname",
+    "items": [
+      {
+        "name": "firstname1",
+        "type": "STRING",
+        "minLength": 3,
+        "maxLength": 250,
+        "validationRegex": "^[a-zA-Z]+$"
+      },
+      {
+        "name": "lastname1",
+        "type": "STRING",
+        "minLength": 3,
+        "maxLength": 250,
+        "validationRegex": "^[a-zA-Z]+$"
+      }
+    ]
+  },
+  {
+    "groupName": "email_accept",
+    "items": [
+      {
+        "name": "email",
+        "type": "STRING",
+        "validationRule": "isValidEmail"
+      },
+      {
+        "name": "accept",
+        "type": "CHECKBOX"
+      }
+    ]
+  },
+  {
+    "groupName": "phone",
+    "items": [
+      {
+        "name": "phone",
+        "type": "NUMBER",
+        "validationRegex": "^[6|7][0-9]{8}$"
+      }
+    ]
+  }
+]
