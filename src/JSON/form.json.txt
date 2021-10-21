@@ -5,10 +5,6 @@
       {
         "name": "monthly_income",
         "type": "RADIO"
-      },
-      {
-        "name": "monthly_income",
-        "type": "CHECKBOX"
       }
     ]
   },

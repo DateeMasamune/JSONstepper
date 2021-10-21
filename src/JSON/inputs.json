@@ -76,5 +76,19 @@
   {
     "step": "phone",
     "label": "Teléfono móvil"
+  },
+  {
+    "step": "work_since",
+    "label": "¿Estás en listados de ASNEF/RAI?",
+    "options": [
+      {
+        "label": "No",
+        "value": 0
+      },
+      {
+        "label": "Sí",
+        "value": 1
+      }
+    ]
   }
 ]
